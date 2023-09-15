@@ -1,4 +1,4 @@
-// import CalculatorAction from "./CalculatorAction";
+import CalculatorAction from "./CalculatorAction";
 import { useReducer } from "react";
 
 type resultState = {
@@ -7,13 +7,6 @@ type resultState = {
 	prevOperand: number;
 	operation: number;
 };
-
-type CalculatorAction =
-	| "add-digit"
-	| "choose-operation"
-	| "clear"
-	| "delete-digit"
-	| "evaluate";
 
 const reducer = (
 	state: resultState,
