@@ -1,4 +1,6 @@
 import CalculatorAction from "./CalculatorAction";
+import DigitButton from "./components/DigitButton";
+import OperationButton from "./components/OperationButton";
 import { useReducer } from "react";
 
 type resultState = {
@@ -13,7 +15,7 @@ const reducer = (
 	{
 		type,
 		payload,
-	}: { type: CalculatorAction; payload: { digit: number; operaion: string } }
+	}: { type: CalculatorAction; payload: { digit: string; operation: string } }
 ) => {
 	switch (type) {
 		case "add-digit":
@@ -45,6 +47,21 @@ function App() {
 					<div className='prevOperand'></div>
 					<div className='currOperand'></div>
 				</div>
+
+				<DigitButton digit='1' dispatch={dispatch} />
+				<DigitButton digit='2' dispatch={dispatch} />
+				<DigitButton digit='3' dispatch={dispatch} />
+				<OperationButton operation='/' dispatch={dispatch} />
+				<DigitButton digit='4' dispatch={dispatch} />
+				<DigitButton digit='5' dispatch={dispatch} />
+				<DigitButton digit='6' dispatch={dispatch} />
+				<OperationButton operation='*' dispatch={dispatch} />
+				<DigitButton digit='7' dispatch={dispatch} />
+				<DigitButton digit='8' dispatch={dispatch} />
+				<DigitButton digit='9' dispatch={dispatch} />
+				<OperationButton operation='-' dispatch={dispatch} />
+				<DigitButton digit='.' dispatch={dispatch} />
+				<DigitButton digit='0' dispatch={dispatch} />
 			</div>
 		</>
 	);

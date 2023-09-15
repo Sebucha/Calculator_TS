@@ -7,9 +7,9 @@ export default function DigitButton({
 }: {
 	dispatch: Dispatch<{
 		type: CalculatorAction;
-		payload: { digit: number };
+		payload: { digit: string };
 	}>;
-	digit: number;
+	digit: string;
 }) {
 	return (
 		<button onClick={() => dispatch({ payload: { digit }, type: "add-digit" })}>
