@@ -1,13 +1,15 @@
+import "./index.css";
+
 import CalculatorAction from "./CalculatorAction";
 import DigitButton from "./components/DigitButton";
 import OperationButton from "./components/OperationButton";
 import { useReducer } from "react";
 
 type resultState = {
-	result: number;
-	currOperand: number;
-	prevOperand: number;
-	operation: number;
+	result: string;
+	currOperand: string;
+	prevOperand: string;
+	operation: string;
 };
 
 const reducer = (
@@ -23,16 +25,24 @@ const reducer = (
 				...state,
 				currOperand: payload.digit,
 			};
+		case "choose-operation":
+			if (state.currOperand === "" && state.prevOperand === "") return state;
+			if (state.currOperand === "")
+				return {
+					...state,
+					operation: payload.operation,
+				};
+			return state;
 		default:
 			return state;
 	}
 };
 
 const initialState: resultState = {
-	result: 0,
-	prevOperand: 0,
-	currOperand: 0,
-	operation: 0,
+	result: "",
+	prevOperand: "",
+	currOperand: "",
+	operation: "",
 };
 
 function App() {
@@ -42,11 +52,16 @@ function App() {
 	);
 	return (
 		<>
-			<div className='calculator-grid'>
+			<div className='calculator-grid bg-blue-600 '>
 				<div className='output'>
-					<div className='prevOperand'></div>
-					<div className='currOperand'></div>
+					<div className='prevOperand'>
+						{prevOperand}
+						{operation}
+					</div>
+					<div className='currOperand'>{currOperand}</div>
 				</div>
+
+				<button className=''></button>
 
 				<DigitButton digit='1' dispatch={dispatch} />
 				<DigitButton digit='2' dispatch={dispatch} />
@@ -63,6 +78,7 @@ function App() {
 				<DigitButton digit='.' dispatch={dispatch} />
 				<DigitButton digit='0' dispatch={dispatch} />
 			</div>
+			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
 		</>
 	);
 }
