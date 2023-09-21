@@ -52,7 +52,7 @@ function App() {
 	);
 	return (
 		<>
-			<div className='calculator-grid bg-blue-600 '>
+			<div className='calculator-grid bg-cyan-300'>
 				<div className='output'>
 					<div className='prevOperand'>
 						{prevOperand}
